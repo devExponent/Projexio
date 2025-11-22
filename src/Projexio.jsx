@@ -43,10 +43,11 @@ function Projexio() {
 
   const save = () => {
     setSaveTask((prevTasks) => {
-      const updated = [...prevTasks, projects]; // add new project
-      setSelectedProjectIndex(updated.length - 1); // select the new project
+      const updated = [...prevTasks, projects];
+      setSelectedProjectIndex(updated.length - 1);
       return updated;
     });
+    console.log(saveTask);
     setProjects({
       title: "",
       description: "",
@@ -58,6 +59,13 @@ function Projexio() {
 
   const AddProject = () => {
     setAddProject(true);
+  };
+
+  const deletePro = () => {
+    setSaveTask((prev) =>
+      prev.filter((pro, index) => index !== selectedProjectIndex)
+    );
+    setSelectedProjectIndex(null);
   };
 
   return (
@@ -122,7 +130,9 @@ function Projexio() {
                     <h2 className="text-4xl font-bold text-stone-600 mb-4">
                       {saveTask[selectedProjectIndex].title}
                     </h2>
-                    <button className="hover:text-red-500">Delete</button>
+                    <button className="hover:text-red-500" onClick={deletePro}>
+                      Delete
+                    </button>
                   </div>
                   <p className="mb-2 text-stone-400 text-2xl">
                     {saveTask[selectedProjectIndex].date}
@@ -131,6 +141,7 @@ function Projexio() {
                     {saveTask[selectedProjectIndex].description}
                   </p>
                 </div>
+
                 <div>
                   <Tasks
                     onClick={addTasks}

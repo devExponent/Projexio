@@ -15,15 +15,21 @@ const Tasks = ({ onClick, handleTasks, projectTasks, setProjectTasks }) => {
 
         <button onClick={onClick}>Add Task</button>
       </div>
-      <div className="bg-stone-600 p-6 rounded-xl">
-        {handleTasks.map((taskitems, index) => (
-          <ul key={index}>
-            <div className="flex justify-between items-center">
-              <li className="my-2 text-white text-xl">{taskitems}</li>
-              <button className="text-xl hover:text-red-500">Clear</button>
-            </div>
-          </ul>
-        ))}
+      <div>
+        {handleTasks <= 0 ? (
+          <p>This proect does not have any tasks yet</p>
+        ) : (
+          <div className="bg-stone-600 p-6 rounded-xl">
+            {handleTasks.map((taskitems, index) => (
+              <ul key={index}>
+                <div className="flex justify-between items-center">
+                  <li className="my-2 text-white text-xl">{taskitems}</li>
+                  <button className="text-xl hover:text-red-500">Clear</button>
+                </div>
+              </ul>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
