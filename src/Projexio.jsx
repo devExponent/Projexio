@@ -47,7 +47,7 @@ function Projexio() {
       setSelectedProjectIndex(updated.length - 1);
       return updated;
     });
-    console.log(saveTask);
+
     setProjects({
       title: "",
       description: "",
@@ -66,6 +66,13 @@ function Projexio() {
       prev.filter((pro, index) => index !== selectedProjectIndex)
     );
     setSelectedProjectIndex(null);
+  };
+
+  const clearTask = () => {
+    setSaveTask((prev) =>
+      prev.filter((pro, index) => index !== selectedProjectIndex)
+    );
+    selectedProjectIndex(null);
   };
 
   return (
@@ -148,6 +155,7 @@ function Projexio() {
                     handleTasks={saveTask[selectedProjectIndex].tasks}
                     projectTasks={projectTasks}
                     setProjectTasks={setProjectTasks}
+                    clearTask={clearTask}
                   />
                 </div>
               </div>

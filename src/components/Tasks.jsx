@@ -1,4 +1,10 @@
-const Tasks = ({ onClick, handleTasks, projectTasks, setProjectTasks }) => {
+const Tasks = ({
+  onClick,
+  handleTasks,
+  projectTasks,
+  setProjectTasks,
+  clearTask,
+}) => {
   return (
     <div>
       <div className="h-px bg-gray-300 my-4 w-full"></div>
@@ -24,7 +30,12 @@ const Tasks = ({ onClick, handleTasks, projectTasks, setProjectTasks }) => {
               <ul key={index}>
                 <div className="flex justify-between items-center">
                   <li className="my-2 text-white text-xl">{taskitems}</li>
-                  <button className="text-xl hover:text-red-500">Clear</button>
+                  <button
+                    className="text-xl hover:text-red-500"
+                    onClick={clearTask}
+                  >
+                    Clear
+                  </button>
                 </div>
               </ul>
             ))}
