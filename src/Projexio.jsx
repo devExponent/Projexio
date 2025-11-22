@@ -1,16 +1,25 @@
-import React from "react";
+import { useState } from "react";
 
 function Projexio() {
+  const [addProject, setAddProject] = useState();
+
+  const AddProject = () => {
+    setAddProject((prev) => !prev);
+  };
   return (
     <div className="flex bg-gray-100 h-screen">
-      <aside className="w-100 bg-black text-white p-5 shadow-md hidden md:block rounded-tr-2xl">
+      <aside className="w-100 bg-black text-white p-5 shadow-md hidden md:block rounded-tr-2xl ">
         <h1 className="text-2xl font-bold my-6">YOUR PROJECTS</h1>
 
         <div>
-          <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
+          <button
+            className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white"
+            onClick={AddProject}
+          >
             + Add Project
           </button>
         </div>
+        {addProject && <>Hello</>}
       </aside>
 
       {/* Main Content */}
@@ -25,15 +34,22 @@ function Projexio() {
             <div className="p-2 bg-gray-200 rounded">Profile</div>
           </div>
         </header>
+
         <div className="grid place-items-center h-full">
           <div className="text-center">
-            <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
-            <p className="text-xl my-8">
-              Select a project or get started with a new one
-            </p>
-            <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
-              Create a new Project
-            </button>
+            {addProject ? (
+              <p>Hello</p>
+            ) : (
+              <>
+                <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
+                <p className="text-xl my-8">
+                  Select a project or get started with a new one
+                </p>
+                <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
+                  Create a new Project
+                </button>
+              </>
+            )}
           </div>
         </div>
       </main>
