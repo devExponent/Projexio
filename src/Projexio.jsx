@@ -47,7 +47,7 @@ function Projexio() {
           </button>
         </div>
         {saveTask.length <= 0 ? (
-          <p>You have no project yet!</p>
+          <p className="my-3">You have no project yet!</p>
         ) : (
           <>
             {saveTask.map((project, index) => (
@@ -88,6 +88,16 @@ function Projexio() {
                 onSave={save}
                 saveTask={saveTask}
               />
+            ) : selectedProjectIndex !== null ? (
+              <div className="border p-6 rounded shadow-md">
+                <h2 className="text-2xl font-bold mb-4">
+                  {saveTask[selectedProjectIndex].title}
+                </h2>
+                <p className="mb-2">{saveTask[selectedProjectIndex].date}</p>
+                <p className="mb-2">
+                  {saveTask[selectedProjectIndex].description}
+                </p>
+              </div>
             ) : (
               <div className="text-center">
                 <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
