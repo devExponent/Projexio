@@ -14,7 +14,6 @@ function Projexio() {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
   const [projectTasks, setProjectTasks] = useState("");
-  const [handleTasks, setHandleTasks] = useState([]);
 
   const addTasks = () => {
     if (selectedProjectIndex === null) return;
@@ -24,14 +23,13 @@ function Projexio() {
         if (idx === selectedProjectIndex) {
           return {
             ...proj,
-            tasks: [...proj.tasks, projectTasks], // add new task
+            tasks: [...proj.tasks, projectTasks],
           };
         }
         return proj;
       })
     );
 
-    // Reset input field
     setProjectTasks("");
   };
 
@@ -44,7 +42,11 @@ function Projexio() {
   };
 
   const save = () => {
-    setSaveTask((prevtasks) => [...prevtasks, projects]);
+    setSaveTask((prevTasks) => {
+      const updated = [...prevTasks, projects]; // add new project
+      setSelectedProjectIndex(updated.length - 1); // select the new project
+      return updated;
+    });
     setProjects({
       title: "",
       description: "",
@@ -132,7 +134,7 @@ function Projexio() {
                 <div>
                   <Tasks
                     onClick={addTasks}
-                    handleTasks={handleTasks}
+                    handleTasks={saveTask[selectedProjectIndex].tasks}
                     projectTasks={projectTasks}
                     setProjectTasks={setProjectTasks}
                   />

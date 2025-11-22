@@ -1,14 +1,4 @@
-import { useState } from "react";
-
-const Tasks = () => {
-  const [projectTasks, setProjectTasks] = useState("");
-  const [handleTasks, setHandleTasks] = useState([]);
-
-  const addTasks = () => {
-    setHandleTasks((prevtasks) => [...prevtasks, projectTasks]);
-    setProjectTasks("");
-  };
-
+const Tasks = ({ onClick, handleTasks, projectTasks, setProjectTasks }) => {
   return (
     <div>
       <div className="h-px bg-gray-300 my-4 w-full"></div>
@@ -20,9 +10,10 @@ const Tasks = () => {
           className="border rounded-md p-2"
           onChange={(e) => setProjectTasks(e.target.value)}
           value={projectTasks}
+          autoFocus
         />
 
-        <button onClick={addTasks}>Add Task</button>
+        <button onClick={onClick}>Add Task</button>
       </div>
       <div className="bg-stone-600 p-6 rounded-xl">
         {handleTasks.map((taskitems, index) => (

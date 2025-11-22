@@ -24,6 +24,7 @@ const Projects = ({ projects, onChange, onSave }) => {
             value={projects.title}
             name="title"
             onChange={onChange}
+            autoFocus
           />
         </div>
 
