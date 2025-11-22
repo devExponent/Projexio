@@ -1,24 +1,4 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
-// Sample chart data
-const data = [
-  { name: "Jan", users: 400, sales: 240 },
-  { name: "Feb", users: 300, sales: 139 },
-  { name: "Mar", users: 200, sales: 980 },
-  { name: "Apr", users: 278, sales: 390 },
-  { name: "May", users: 189, sales: 480 },
-  { name: "Jun", users: 239, sales: 380 },
-];
 
 function Projexio() {
   return (
@@ -45,8 +25,15 @@ function Projexio() {
             <div className="p-2 bg-gray-200 rounded">Profile</div>
           </div>
         </header>
-
-        {/* Table */}
+        <div className="text-center items-center">
+          <h1 className="font-bold text-3xl my-3">No Project Selected</h1>
+          <p className="text-xl my-3">
+            Select a project or get started with a new one
+          </p>
+          <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
+            Create a new Project
+          </button>
+        </div>
       </main>
     </div>
   );
