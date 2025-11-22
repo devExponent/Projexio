@@ -25,14 +25,16 @@ function Projexio() {
             <div className="p-2 bg-gray-200 rounded">Profile</div>
           </div>
         </header>
-        <div className="text-center items-center">
-          <h1 className="font-bold text-3xl my-3">No Project Selected</h1>
-          <p className="text-xl my-3">
-            Select a project or get started with a new one
-          </p>
-          <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
-            Create a new Project
-          </button>
+        <div className="grid place-items-center h-full">
+          <div className="text-center">
+            <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
+            <p className="text-xl my-8">
+              Select a project or get started with a new one
+            </p>
+            <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
+              Create a new Project
+            </button>
+          </div>
         </div>
       </main>
     </div>
