@@ -12,6 +12,14 @@ function Projexio() {
   const [saveTask, setSaveTask] = useState([]);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
+  const [projectTasks, setProjectTasks] = useState("");
+  const [handleTasks, setHandleTasks] = useState([]);
+
+  const addTasks = () => {
+    setHandleTasks((prevtasks) => [...prevtasks, projectTasks]);
+    setProjectTasks("");
+  };
+
   const taskInput = (e) => {
     const { name, value } = e.target;
     setProjects((prev) => ({
@@ -84,7 +92,7 @@ function Projexio() {
           <div className="w-full md:w-10/12 mx-auto">
             {addProject ? (
               <Projects
-                tasks={projects}
+                projects={projects}
                 onChange={taskInput}
                 onSave={save}
                 saveTask={saveTask}
@@ -106,7 +114,12 @@ function Projexio() {
                   </p>
                 </div>
                 <div>
-                  <Tasks />
+                  <Tasks
+                    onClick={addTasks}
+                    handleTasks={handleTasks}
+                    projectTasks={projectTasks}
+                    setProjectTasks={setProjectTasks}
+                  />
                 </div>
               </div>
             ) : (

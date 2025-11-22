@@ -1,4 +1,4 @@
-const Projects = ({ tasks, onChange, onSave }) => {
+const Projects = ({ projects, onChange, onSave }) => {
   return (
     <div className="w-full md:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="flex justify-end mb-6">
@@ -21,7 +21,7 @@ const Projects = ({ tasks, onChange, onSave }) => {
           <input
             type="text"
             className="border rounded-md p-2"
-            value={tasks.title}
+            value={projects.title}
             name="title"
             onChange={onChange}
           />
@@ -31,7 +31,7 @@ const Projects = ({ tasks, onChange, onSave }) => {
           <label className="mb-1 font-semibold">DESCRIPTION</label>
           <textarea
             className="border rounded-md p-2 h-32"
-            value={tasks.description}
+            value={projects.description}
             name="description"
             onChange={onChange}
           ></textarea>
@@ -42,7 +42,7 @@ const Projects = ({ tasks, onChange, onSave }) => {
           <input
             type="date"
             className="border rounded-md p-2"
-            value={tasks.date}
+            value={projects.date}
             name="date"
             onChange={onChange}
           />

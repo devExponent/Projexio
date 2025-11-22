@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState("");
+  const [projectTasks, setProjectTasks] = useState("");
   const [handleTasks, setHandleTasks] = useState([]);
 
   const addTasks = () => {
-    setHandleTasks((prevtasks) => [...prevtasks, tasks]);
-    setTasks("");
+    setHandleTasks((prevtasks) => [...prevtasks, projectTasks]);
+    setProjectTasks("");
   };
 
   return (
@@ -18,8 +18,8 @@ const Tasks = () => {
         <input
           type="text"
           className="border rounded-md p-2"
-          onChange={(e) => setTasks(e.target.value)}
-          value={tasks}
+          onChange={(e) => setProjectTasks(e.target.value)}
+          value={projectTasks}
         />
 
         <button onClick={addTasks}>Add Task</button>
