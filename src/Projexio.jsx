@@ -8,9 +8,8 @@ function Projexio() {
     description: "",
     date: "",
   });
-
-  // const [handleError, setError] = useState();
   const [saveTask, setSaveTask] = useState([]);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
 
   const taskInput = (e) => {
     const { name, value } = e.target;
@@ -27,6 +26,7 @@ function Projexio() {
       description: "",
       date: "",
     });
+    setAddProject(false);
   };
 
   const AddProject = () => {
@@ -46,17 +46,24 @@ function Projexio() {
             + Add Project
           </button>
         </div>
-        <div className="flex flex-col gap-6">
-          {saveTask.map((prevTasks, index) => (
-            <>
-              <ul key={index}>
-                <li>{prevTasks.title}</li>
-                <li>{prevTasks.description}</li>
-                <li>{prevTasks.date}</li>
-              </ul>
-            </>
-          ))}
-        </div>
+        {saveTask.length <= 0 ? (
+          <p>You have no project yet!</p>
+        ) : (
+          <>
+            {saveTask.map((project, index) => (
+              <div
+                key={index}
+                className="cursor-pointer hover:bg-stone-600  rounded-xl my-3 p-2"
+                onClick={() => {
+                  setSelectedProjectIndex(index);
+                  setAddProject(false);
+                }}
+              >
+                {project.title}
+              </div>
+            ))}
+          </>
+        )}
       </aside>
 
       {/* Main Content */}

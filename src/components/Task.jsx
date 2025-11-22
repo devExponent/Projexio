@@ -1,8 +1,6 @@
-import { useState } from "react";
-
-const Task = ({ tasks, onChange, onSave, saveTask }) => {
+const Task = ({ tasks, onChange, onSave }) => {
   return (
-    <div className="w-full md:w-8/12 mx-auto p-6">
+    <div className="w-full md:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="flex justify-end mb-6">
         <div className="flex gap-4">
           <button className="px-4 py-2 rounded-md border hover:bg-red-500">
