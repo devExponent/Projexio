@@ -8,6 +8,7 @@ function Projexio() {
     title: "",
     description: "",
     date: "",
+    tasks: [],
   });
   const [saveTask, setSaveTask] = useState([]);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
@@ -16,7 +17,21 @@ function Projexio() {
   const [handleTasks, setHandleTasks] = useState([]);
 
   const addTasks = () => {
-    setHandleTasks((prevtasks) => [...prevtasks, projectTasks]);
+    if (selectedProjectIndex === null) return;
+
+    setSaveTask((prevProjects) =>
+      prevProjects.map((proj, idx) => {
+        if (idx === selectedProjectIndex) {
+          return {
+            ...proj,
+            tasks: [...proj.tasks, projectTasks], // add new task
+          };
+        }
+        return proj;
+      })
+    );
+
+    // Reset input field
     setProjectTasks("");
   };
 
@@ -34,6 +49,7 @@ function Projexio() {
       title: "",
       description: "",
       date: "",
+      tasks: [],
     });
     setAddProject(false);
   };
