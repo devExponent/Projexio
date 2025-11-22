@@ -80,7 +80,7 @@ function Projexio() {
         </header>
 
         <div className="grid place-items-center h-full">
-          <div className=" w-full mx-auto">
+          <div className="w-full md:w-10/12 mx-auto">
             {addProject ? (
               <Task
                 tasks={tasks}
@@ -90,9 +90,12 @@ function Projexio() {
               />
             ) : selectedProjectIndex !== null ? (
               <div className="border p-6 rounded shadow-md">
-                <h2 className="text-2xl font-bold mb-4">
-                  {saveTask[selectedProjectIndex].title}
-                </h2>
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-bold mb-4">
+                    {saveTask[selectedProjectIndex].title}
+                  </h2>
+                  <button>Delete</button>
+                </div>
                 <p className="mb-2">{saveTask[selectedProjectIndex].date}</p>
                 <p className="mb-2">
                   {saveTask[selectedProjectIndex].description}
