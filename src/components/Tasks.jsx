@@ -14,7 +14,7 @@ const Tasks = () => {
       <div className="h-px bg-gray-300 my-4 w-full"></div>
 
       <h1 className="text-4xl font-bold text-stone-600">Tasks</h1>
-      <div className="flex gap-6 my-6 w-full ">
+      <div className="flex gap-6 my-6 w-full items-center">
         <input
           type="text"
           className="border rounded-md p-2"
@@ -24,7 +24,7 @@ const Tasks = () => {
 
         <button onClick={addTasks}>Add Task</button>
       </div>
-      <div className="bg-stone-600 p-6">
+      <div className="bg-stone-600 p-6 rounded-xl">
         {handleTasks.map((taskitems, index) => (
           <ul key={index}>
             <div className="flex justify-between items-center">
