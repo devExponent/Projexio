@@ -1,8 +1,24 @@
-import React from "react";
+import { useState } from "react";
 
 const Task = () => {
+  const [tasks, setTasks] = useState({
+    title: "",
+    description: "",
+    date: "",
+  });
+
+  const taskInput = (e) => {
+    const { name, value } = e.target;
+    setTasks((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const [handleError, setError] = useState();
+
   return (
-    <div className="w-8/12 mx-auto p-6">
+    <div className="w-full md:w-8/12 mx-auto p-6">
       <div className="flex justify-end mb-6">
         <div className="flex gap-4">
           <button className="px-4 py-2 rounded-md border hover:bg-red-500">
@@ -17,17 +33,34 @@ const Task = () => {
       <form className="space-y-6">
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">TITLE</label>
-          <input type="text" className="border rounded-md p-2" />
+          <input
+            type="text"
+            className="border rounded-md p-2"
+            value={tasks.title}
+            name="title"
+            onChange={taskInput}
+          />
         </div>
 
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">DESCRIPTION</label>
-          <textarea className="border rounded-md p-2 h-32"></textarea>
+          <textarea
+            className="border rounded-md p-2 h-32"
+            value={tasks.description}
+            name="description"
+            onChange={taskInput}
+          ></textarea>
         </div>
 
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">DUE DATE</label>
-          <input type="date" className="border rounded-md p-2" />
+          <input
+            type="date"
+            className="border rounded-md p-2"
+            value={tasks.date}
+            name="date"
+            onChange={taskInput}
+          />
         </div>
       </form>
     </div>
