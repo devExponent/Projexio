@@ -1,4 +1,4 @@
-const Task = ({ tasks, onChange, onSave }) => {
+const Projects = ({ tasks, onChange, onSave }) => {
   return (
     <div className="w-full md:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="flex justify-end mb-6">
@@ -52,4 +52,4 @@ const Task = ({ tasks, onChange, onSave }) => {
   );
 };
 
-export default Task;
+export default Projects;

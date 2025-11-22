@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Task from "./components/Task";
+import Projects from "./components/Projects";
+import Tasks from "./components/Tasks";
 function Projexio() {
   const [addProject, setAddProject] = useState(false);
 
-  const [tasks, setTasks] = useState({
+  const [projects, setProjects] = useState({
     title: "",
     description: "",
     date: "",
@@ -13,15 +14,15 @@ function Projexio() {
 
   const taskInput = (e) => {
     const { name, value } = e.target;
-    setTasks((prev) => ({
+    setProjects((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
   const save = () => {
-    setSaveTask((prevtasks) => [...prevtasks, tasks]);
-    setTasks({
+    setSaveTask((prevtasks) => [...prevtasks, projects]);
+    setProjects({
       title: "",
       description: "",
       date: "",
@@ -82,24 +83,31 @@ function Projexio() {
         <div className="grid place-items-center h-full">
           <div className="w-full md:w-10/12 mx-auto">
             {addProject ? (
-              <Task
-                tasks={tasks}
+              <Projects
+                tasks={projects}
                 onChange={taskInput}
                 onSave={save}
                 saveTask={saveTask}
               />
             ) : selectedProjectIndex !== null ? (
-              <div className="border p-6 rounded shadow-md">
-                <div className="flex justify-between">
-                  <h2 className="text-2xl font-bold mb-4">
-                    {saveTask[selectedProjectIndex].title}
-                  </h2>
-                  <button>Delete</button>
+              <div className=" p-6 rounded shadow-md">
+                <div className="my-5">
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-4xl font-bold text-stone-600 mb-4">
+                      {saveTask[selectedProjectIndex].title}
+                    </h2>
+                    <button className="hover:text-red-500">Delete</button>
+                  </div>
+                  <p className="mb-2 text-stone-400 text-2xl">
+                    {saveTask[selectedProjectIndex].date}
+                  </p>
+                  <p className="mb-2">
+                    {saveTask[selectedProjectIndex].description}
+                  </p>
                 </div>
-                <p className="mb-2">{saveTask[selectedProjectIndex].date}</p>
-                <p className="mb-2">
-                  {saveTask[selectedProjectIndex].description}
-                </p>
+                <div>
+                  <Tasks />
+                </div>
               </div>
             ) : (
               <div className="text-center">
