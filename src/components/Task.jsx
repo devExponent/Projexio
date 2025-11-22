@@ -1,22 +1,6 @@
 import { useState } from "react";
 
-const Task = () => {
-  const [tasks, setTasks] = useState({
-    title: "",
-    description: "",
-    date: "",
-  });
-
-  const taskInput = (e) => {
-    const { name, value } = e.target;
-    setTasks((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const [handleError, setError] = useState();
-
+const Task = ({ tasks, onChange, onSave, saveTask }) => {
   return (
     <div className="w-full md:w-8/12 mx-auto p-6">
       <div className="flex justify-end mb-6">
@@ -24,7 +8,10 @@ const Task = () => {
           <button className="px-4 py-2 rounded-md border hover:bg-red-500">
             Cancel
           </button>
-          <button className="px-4 py-2 rounded-md bg-blue-600 hover:bg-[green] text-white">
+          <button
+            className="px-4 py-2 rounded-md bg-blue-600 hover:bg-[green] text-white"
+            onClick={onSave}
+          >
             Save
           </button>
         </div>
@@ -38,7 +25,7 @@ const Task = () => {
             className="border rounded-md p-2"
             value={tasks.title}
             name="title"
-            onChange={taskInput}
+            onChange={onChange}
           />
         </div>
 
@@ -48,7 +35,7 @@ const Task = () => {
             className="border rounded-md p-2 h-32"
             value={tasks.description}
             name="description"
-            onChange={taskInput}
+            onChange={onChange}
           ></textarea>
         </div>
 
@@ -59,7 +46,7 @@ const Task = () => {
             className="border rounded-md p-2"
             value={tasks.date}
             name="date"
-            onChange={taskInput}
+            onChange={onChange}
           />
         </div>
       </form>

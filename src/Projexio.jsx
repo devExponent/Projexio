@@ -1,11 +1,38 @@
 import { useState } from "react";
 import Task from "./components/Task";
 function Projexio() {
-  const [addProject, setAddProject] = useState();
+  const [addProject, setAddProject] = useState(false);
+
+  const [tasks, setTasks] = useState({
+    title: "",
+    description: "",
+    date: "",
+  });
+
+  // const [handleError, setError] = useState();
+  const [saveTask, setSaveTask] = useState([]);
+
+  const taskInput = (e) => {
+    const { name, value } = e.target;
+    setTasks((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const save = () => {
+    setSaveTask((prevtasks) => [...prevtasks, tasks]);
+    setTasks({
+      title: "",
+      description: "",
+      date: "",
+    });
+  };
 
   const AddProject = () => {
-    setAddProject((prev) => !prev);
+    setAddProject(true);
   };
+
   return (
     <div className="flex bg-gray-100 h-screen">
       <aside className="w-100 bg-black text-white p-5 shadow-md hidden md:block rounded-tr-2xl ">
@@ -18,6 +45,17 @@ function Projexio() {
           >
             + Add Project
           </button>
+        </div>
+        <div className="flex flex-col gap-6">
+          {saveTask.map((prevTasks, index) => (
+            <>
+              <ul key={index}>
+                <li>{prevTasks.title}</li>
+                <li>{prevTasks.description}</li>
+                <li>{prevTasks.date}</li>
+              </ul>
+            </>
+          ))}
         </div>
       </aside>
 
@@ -37,7 +75,12 @@ function Projexio() {
         <div className="grid place-items-center h-full">
           <div className=" w-full mx-auto">
             {addProject ? (
-              <Task />
+              <Task
+                tasks={tasks}
+                onChange={taskInput}
+                onSave={save}
+                saveTask={saveTask}
+              />
             ) : (
               <div className="text-center">
                 <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
