@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import TailwindForm from "./components/Task";
 function Projexio() {
   const [addProject, setAddProject] = useState();
 
@@ -36,11 +36,11 @@ function Projexio() {
         </header>
 
         <div className="grid place-items-center h-full">
-          <div className="text-center">
+          <div className=" w-full mx-auto">
             {addProject ? (
-              <p>Hello</p>
+              <TailwindForm />
             ) : (
-              <>
+              <div className="text-center">
                 <h1 className="font-bold text-3xl my-8">No Project Selected</h1>
                 <p className="text-xl my-8">
                   Select a project or get started with a new one
@@ -48,7 +48,7 @@ function Projexio() {
                 <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
                   Create a new Project
                 </button>
-              </>
+              </div>
             )}
           </div>
         </div>
