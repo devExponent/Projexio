@@ -57,6 +57,10 @@ function Projexio() {
     setAddProject(false);
   };
 
+  const onCancel = () => {
+    setAddProject(false);
+  };
+
   const AddProject = () => {
     setAddProject(true);
   };
@@ -136,6 +140,7 @@ function Projexio() {
                 onChange={taskInput}
                 onSave={save}
                 saveTask={saveTask}
+                onCancel={onCancel}
               />
             ) : selectedProjectIndex !== null ? (
               <div className=" p-6 rounded shadow-md">
