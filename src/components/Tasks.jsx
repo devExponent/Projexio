@@ -10,17 +10,18 @@ const Tasks = ({
       <div className="h-px bg-gray-300 my-4 w-full"></div>
 
       <h1 className="text-4xl font-bold text-stone-600">Tasks</h1>
-      <div className="flex gap-6 my-6 w-full items-center">
+      <form className="flex gap-6 my-6 w-full items-center">
         <input
           type="text"
           className="border rounded-md p-2"
           onChange={(e) => setProjectTasks(e.target.value)}
           value={projectTasks}
           autoFocus
+          required
         />
 
         <button onClick={onClick}>Add Task</button>
-      </div>
+      </form>
       <div>
         {handleTasks <= 0 ? (
           <p>This proect does not have any tasks yet</p>
