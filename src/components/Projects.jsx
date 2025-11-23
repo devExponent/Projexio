@@ -1,4 +1,11 @@
-const Projects = ({ projects, onChange, onSave, onCancel }) => {
+const Projects = ({
+  projects,
+  onChange,
+  onSave,
+  onCancel,
+  titleRef,
+  validation,
+}) => {
   return (
     <div className="w-full md:w-8/12 mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="flex justify-end mb-6">
@@ -28,9 +35,9 @@ const Projects = ({ projects, onChange, onSave, onCancel }) => {
             name="title"
             onChange={onChange}
             autoFocus
+            ref={titleRef}
           />
         </div>
-
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">DESCRIPTION</label>
           <textarea
@@ -40,7 +47,6 @@ const Projects = ({ projects, onChange, onSave, onCancel }) => {
             onChange={onChange}
           ></textarea>
         </div>
-
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">DUE DATE</label>
           <input
@@ -48,9 +54,13 @@ const Projects = ({ projects, onChange, onSave, onCancel }) => {
             className="border rounded-md p-2"
             value={projects.date}
             name="date"
+            min={new Date().toISOString().split("T")[0]}
             onChange={onChange}
           />
         </div>
+        {!validation && (
+          <p className="text-red-500 mt-2">All fields are required</p>
+        )}
       </form>
     </div>
   );

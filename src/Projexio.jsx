@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Projects from "./components/Projects";
 import Tasks from "./components/Tasks";
 function Projexio() {
   const [addProject, setAddProject] = useState(false);
-
+  const [isValid, setIsValid] = useState(true);
   const [projects, setProjects] = useState({
     title: "",
     description: "",
@@ -12,12 +12,13 @@ function Projexio() {
   });
   const [saveTask, setSaveTask] = useState([]);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
-
   const [projectTasks, setProjectTasks] = useState("");
+
+  let titleRef = useRef(null);
+  let datRef = useRef(null);
 
   const addTasks = () => {
     if (selectedProjectIndex === null) return;
-
     setSaveTask((prevProjects) =>
       prevProjects.map((proj, idx) => {
         if (idx === selectedProjectIndex) {
@@ -42,6 +43,15 @@ function Projexio() {
   };
 
   const save = () => {
+    const title = titleRef.current.value.trim();
+    const date = datRef.current.value.trim();
+    if (title === "" || date === "") {
+      setIsValid(false);
+      return;
+    }
+
+    setIsValid(true);
+
     setSaveTask((prevTasks) => {
       const updated = [...prevTasks, projects];
       setSelectedProjectIndex(updated.length - 1);
@@ -141,6 +151,9 @@ function Projexio() {
                 onSave={save}
                 saveTask={saveTask}
                 onCancel={onCancel}
+                titleRef={titleRef}
+                dateRef={datRef}
+                validation={isValid}
               />
             ) : selectedProjectIndex !== null ? (
               <div className=" p-6 rounded shadow-md">
