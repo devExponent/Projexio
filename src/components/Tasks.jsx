@@ -32,7 +32,7 @@ const Tasks = ({
                   <li className="my-2 text-white text-xl">{taskitems}</li>
                   <button
                     className="text-xl hover:text-red-500"
-                    onClick={clearTask}
+                    onClick={() => clearTask(index)}
                   >
                     Clear
                   </button>

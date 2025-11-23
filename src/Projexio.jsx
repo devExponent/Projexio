@@ -68,11 +68,18 @@ function Projexio() {
     setSelectedProjectIndex(null);
   };
 
-  const clearTask = () => {
+  const clearTask = (taskIndex) => {
     setSaveTask((prev) =>
-      prev.filter((pro, index) => index !== selectedProjectIndex)
+      prev.map((pretasks, index) => {
+        if (index === selectedProjectIndex) {
+          return {
+            ...pretasks,
+            tasks: pretasks.tasks.filter((pretask, indx) => indx !== taskIndex),
+          };
+        }
+        return pretasks;
+      })
     );
-    selectedProjectIndex(null);
   };
 
   return (
