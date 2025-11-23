@@ -16,6 +16,7 @@ function Projexio() {
 
   let titleRef = useRef(null);
   let datRef = useRef(null);
+  let descriptionRef = useRef(null);
 
   const addTasks = () => {
     if (selectedProjectIndex === null) return;
@@ -44,8 +45,9 @@ function Projexio() {
 
   const save = () => {
     const title = titleRef.current.value.trim();
+    const description = descriptionRef.current.value.trim();
     const date = datRef.current.value.trim();
-    if (title === "" || date === "") {
+    if (title === "" || date === "" || description === "") {
       setIsValid(false);
       return;
     }
@@ -153,6 +155,7 @@ function Projexio() {
                 onCancel={onCancel}
                 titleRef={titleRef}
                 dateRef={datRef}
+                descriptionRef={descriptionRef}
                 validation={isValid}
               />
             ) : selectedProjectIndex !== null ? (

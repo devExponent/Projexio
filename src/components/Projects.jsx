@@ -4,6 +4,8 @@ const Projects = ({
   onSave,
   onCancel,
   titleRef,
+  dateRef,
+  descriptionRef,
   validation,
 }) => {
   return (
@@ -44,6 +46,7 @@ const Projects = ({
             className="border rounded-md p-2 h-32"
             value={projects.description}
             name="description"
+            ref={descriptionRef}
             onChange={onChange}
           ></textarea>
         </div>
@@ -54,6 +57,7 @@ const Projects = ({
             className="border rounded-md p-2"
             value={projects.date}
             name="date"
+            ref={dateRef}
             min={new Date().toISOString().split("T")[0]}
             onChange={onChange}
           />
