@@ -194,7 +194,10 @@ function Projexio() {
                 <p className="text-xl my-8">
                   Select a project or get started with a new one
                 </p>
-                <button className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white">
+                <button
+                  className="bg-stone-600 rounded-xl py-3 px-6 text-lg text-center text-white"
+                  onClick={AddProject}
+                >
                   Create a new Project
                 </button>
               </div>
