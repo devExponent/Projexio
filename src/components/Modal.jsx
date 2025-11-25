@@ -5,10 +5,10 @@ const Modal = ({ children }) => {
     <dialog>
       {children}
       <form method="dialog">
-        <button>Close</button>
+        <button>close</button>
       </form>
     </dialog>,
-    document.getElementById("root")
+    document.getElementById("modal-root")
   );
 };
 

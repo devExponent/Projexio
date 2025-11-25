@@ -43,7 +43,7 @@ const Projects = ({
         <div className="flex flex-col">
           <label className="mb-1 font-semibold">DESCRIPTION</label>
           <textarea
-            className="border rounded-md p-2 h-32"
+            className="border rounded-md p-2 h-32 whitespace-pre-wrap"
             value={projects.description}
             name="description"
             ref={descriptionRef}
